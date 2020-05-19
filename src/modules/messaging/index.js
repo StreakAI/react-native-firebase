@@ -79,8 +79,8 @@ export default class Messaging extends ModuleBase {
     return this._ios;
   }
 
-  getToken(): Promise<string> {
-    return getNativeModule(this).getToken();
+  getToken(instanceName: String): Promise<string> {
+    return getNativeModule(this).getToken(instanceName);
   }
 
   deleteToken(): Promise<void> {

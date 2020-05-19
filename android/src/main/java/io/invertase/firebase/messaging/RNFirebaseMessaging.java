@@ -54,11 +54,11 @@ public class RNFirebaseMessaging extends ReactContextBaseJavaModule {
   }
 
   @ReactMethod
-  public void getToken(Promise promise) {
+  public void getToken(String instanceName, Promise promise) {
     try {
-      String senderId = FirebaseApp.getInstance().getOptions().getGcmSenderId();
+      String senderId = FirebaseApp.getInstance(instanceName).getOptions().getGcmSenderId();
       String token = FirebaseInstanceId
-        .getInstance()
+        .getInstance(FirebaseApp.getInstance(instanceName))
         .getToken(senderId, FirebaseMessaging.INSTANCE_ID_SCOPE);
       promise.resolve(token);
     } catch (Throwable e) {
