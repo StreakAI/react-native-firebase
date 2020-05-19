@@ -48,8 +48,8 @@ export default class Messaging extends ModuleBase {
     return this._ios;
   }
 
-  getToken() {
-    return getNativeModule(this).getToken();
+  getToken(instanceName) {
+    return getNativeModule(this).getToken(instanceName);
   }
 
   deleteToken() {
