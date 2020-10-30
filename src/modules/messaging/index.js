@@ -80,7 +80,8 @@ export default class Messaging extends ModuleBase {
   }
 
   getToken(instanceName: String): Promise<string> {
-    return getNativeModule(this).getToken(instanceName);
+    if(Platform.OS === 'ios') return getNativeModule(this).getToken();
+    else return getNativeModule(this).getToken(instanceName);
   }
 
   deleteToken(): Promise<void> {
